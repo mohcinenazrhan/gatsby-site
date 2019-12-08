@@ -1,4 +1,5 @@
 import React from "react"
+import Link from 'gatsby-link'
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -17,6 +18,8 @@ export default function Template({ data }) {
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+        <hr />
+        <Link to="/blog">Latest Posts</Link>
       </div>
     </Layout>
   )
