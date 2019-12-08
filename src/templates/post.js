@@ -14,6 +14,8 @@ export default function Template({ data, pageContext }) {
     <Layout>
       <SEO title={frontmatter.title} />
       <div className="blog-post">
+        <Link to="/blog">Latest Posts</Link>
+        <hr />
         <h1>{frontmatter.title}</h1>
         <h2>{frontmatter.date}</h2>
         <div
