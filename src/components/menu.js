@@ -4,6 +4,14 @@ import Link from 'gatsby-link'
 const linkStyle = {
   color: '#FFF',
   textDecoration: 'none',
+  padding: '1px 15px',
+}
+
+const activeLinkStyle = {
+  color: "#00bcd4",
+  background: 'white',
+  borderRadius: '2px',
+  fontWeight: 'bold',
 }
 
 const Menu = () => (
@@ -20,13 +28,13 @@ const Menu = () => (
       }}
     >
       <li>
-        <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/">Home</Link>
+        <Link style={linkStyle} activeStyle={activeLinkStyle} to="/">Home</Link>
       </li>
       <li>
-        <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/blog">Blog</Link>
+        <Link style={linkStyle} activeStyle={activeLinkStyle} to="/blog">Blog</Link>
       </li>
       <li>
-        <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/about">About</Link>
+        <Link style={linkStyle} activeStyle={activeLinkStyle} to="/about">About</Link>
       </li>
     </ul>
   </div>
