@@ -23,6 +23,9 @@ const Menu = () => (
         <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/">Home</Link>
       </li>
       <li>
+        <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/blog">Blog</Link>
+      </li>
+      <li>
         <Link style={linkStyle} activeStyle={{ color: "#00e2ff" }} to="/about">About</Link>
       </li>
     </ul>
