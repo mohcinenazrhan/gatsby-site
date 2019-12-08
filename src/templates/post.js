@@ -5,9 +5,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+  const { prev, next } = pageContext
+
   return (
     <Layout>
       <SEO title={frontmatter.title} />
@@ -19,7 +21,9 @@ export default function Template({ data }) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <hr />
-        <Link to="/blog">Latest Posts</Link>
+        {prev && <Link to={prev.frontmatter.path}>Prev.</Link>}
+        {' '}
+        {next && <Link to={next.frontmatter.path}>Next</Link>}
       </div>
     </Layout>
   )
