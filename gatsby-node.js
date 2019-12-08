@@ -12,7 +12,9 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark (
+        sort: { order: ASC, fields: [frontmatter___date]}
+      ) {
         edges {
           node {
             frontmatter {
@@ -27,10 +29,15 @@ exports.createPages = async ({ actions, graphql }) => {
     console.error(result.errors)
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const posts = result.data.allMarkdownRemark.edges;
+  posts.forEach(({ node }, index) => {
     createPage({
       path: node.frontmatter.path,
       component: path.resolve(`src/templates/post.js`),
+      context: {
+        prev: index === 0 ? null : posts[index - 1].node,
+        next: index === (posts.length - 1) ? null : posts[index + 1].node
+      }
     })
   })
 }
