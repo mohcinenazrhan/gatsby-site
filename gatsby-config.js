@@ -21,6 +21,12 @@ module.exports = {
         path: `${__dirname}/src/content`,
       },
     },
+    {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {
+        excludePattern: /(excluded-link|external)/,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
