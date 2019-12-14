@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Img from 'gatsby-image'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,6 +11,7 @@ const BlogPage = ({ data }) => (
     <h1>Latest Posts</h1>
     {data.allMarkdownRemark.edges.map(post => (
       <article key={post.node.id}>
+        {post.node.frontmatter.image && <Img fluid={post.node.frontmatter.image.childImageSharp.fluid} />}
         <h3>{post.node.frontmatter.title}</h3>
         <small>
           Posted by {post.node.frontmatter.author} on{' '}
@@ -38,6 +40,13 @@ export const pageQuery = graphql`
             title
             date
             author
+            image {
+              childImageSharp {
+                fluid (maxWidth: 300, quality: 50) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
